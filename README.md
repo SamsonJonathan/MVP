@@ -25,7 +25,7 @@ Read more about the development process in our blog:
 Building ShopEase: A Modern E-commerce Journey
 Understand the technical aspects and challenges faced during the development.
 
-##Author
+##Author##
 Samson jonathan
 Let's connect on LinkedIn!
 https://www.linkedin.com/in/samson-jonathan-42a7b6255/
@@ -83,7 +83,7 @@ bash
 Copy code
 git push origin feature-branch-name
 Open a Pull Request, and we will review it!
-#Related Projects
+#Related Projects#
 Amazon
 Shopify
 WooCommerce
