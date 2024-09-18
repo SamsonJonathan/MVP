@@ -1,0 +1,122 @@
+.logo {
+    font-size: 33px;
+    font-weight: 800;
+    color: var(--text-color);
+    padding: 10;
+    max-width: 2%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sign Up Section */
+.signup-section {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 100vh; /* Makes sure the form is vertically centered */
+    background-color: var(--bg-color);
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 400px; /* Controls the max width of the form */
+    background-color: rgb(121, 74, 223);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.signup-section h2 {
+    margin-bottom: 10px;
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: wheat;
+    background-color: var(--bg-color);
+    transition: all;
+    font-size: 33px;
+    font-weight: 800;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-group {
+    width: 100%; /* Ensures input fields stretch to full container width */
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
+    color: var(--second-color);
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%; /* Full width input fields */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    border-color: var(--second-color);
+    outline: none;
+}
+
+.btn-signup {
+    width: 100%; /* Full width button */
+    background-color: var(--text-color);
+    color: wheat;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-signup:hover {
+    background-color: var(--second-color);
+    color: var(--bg-color);
+    transition: all .6s;
+}
+
+.signup-footer {
+    margin-top: 20px;
+    color: var(--second-color);
+}
+
+.signup-footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-footer a:hover {
+    color: var(--second-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 30px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .signup-section h2 {
+        font-size: 2rem; /* Slightly smaller heading on smaller screens */
+    }
+
+    .btn-signup {
+        font-size: 16px;
+    }
+}
+
