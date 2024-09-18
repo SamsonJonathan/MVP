@@ -1,38 +1,84 @@
-// script.js
+// Function to check if user is logged in
+function checkLoginStatus() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if (isLoggedIn === 'true') {
+    // User is logged in, update UI accordingly
+    document.getElementById('show-login').textContent = 'Logout';
+    // You might want to show a welcome message or the username here
+  }
+}
 
-// Toggle mobile menu
-const menuIcon = document.getElementById('menu-icon');
-const navList = document.querySelector('.navlist');
+// Function to handle login
+function login(username, password) {
+  // This is where you'd normally send a request to your server to validate credentials
+  // For this example, we'll just check if both fields are filled
+  if (username && password) {
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('username', username);
+    checkLoginStatus();
+    alert('Login successful!');
+    return true;
+  }
+  return false;
+}
 
-menuIcon.addEventListener('click', () => {
-  navList.classList.toggle('active');
-  menuIcon.classList.toggle('bx-x');
-});
+// Function to handle logout
+function logout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('username');
+  document.getElementById('show-login').textContent = 'Login';
+  alert('You have been logged out.');
+}
 
-// Add to cart functionality
-const addToCartButtons = document.querySelectorAll('.row-left a');
-const cartCount = document.querySelector('.ri-shopping-cart-2-line');
+// Function to auto-fill login form
+function autoFillLoginForm() {
+  const savedUsername = localStorage.getItem('username');
+  if (savedUsername) {
+    document.getElementById('username').value = savedUsername;
+    document.getElementById('remember-me').checked = true;
+  }
+}
 
-let cartItems = 0;
+// Event listener for page load
+document.addEventListener('DOMContentLoaded', function() {
+  const loginBtn = document.getElementById('show-login');
+  const loginSection = document.getElementById('login-section');
+  const loginForm = document.getElementById('login-form');
 
-addToCartButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
+  // Check login status on page load
+  checkLoginStatus();
+
+  loginBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    cartItems++;
-    cartCount.setAttribute('data-count', cartItems);
-    alert('Item added to cart!');
+    if (loginBtn.textContent === 'Logout') {
+      logout();
+    } else {
+      loginSection.style.display = 'flex';
+      autoFillLoginForm();
+    }
   });
-});
 
-// Scroll animation for product cards
-const productCards = document.querySelectorAll('.row');
+  loginSection.addEventListener('click', function(e) {
+    if (e.target === loginSection) {
+      loginSection.style.display = 'none';
+    }
+  });
 
-window.addEventListener('scroll', () => {
-  const scrollPos = window.scrollY + window.innerHeight;
-  
-  productCards.forEach(card => {
-    if (card.getBoundingClientRect().top + window.scrollY < scrollPos) {
-      card.classList.add('fadeIn');
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const rememberMe = document.getElementById('remember-me').checked;
+
+    if (login(username, password)) {
+      loginSection.style.display = 'none';
+      if (rememberMe) {
+        localStorage.setItem('username', username);
+      } else {
+        localStorage.removeItem('username');
+      }
+    } else {
+      alert('Invalid username or password');
     }
   });
 });
